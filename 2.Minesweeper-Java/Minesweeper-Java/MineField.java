@@ -13,12 +13,8 @@ class MineField{
 		visible=new boolean[rowMax][colMax];
 		boom=false;
 		
-		for(int row=0;row<rowMax;row++){
-			for(int col=0;col<colMax;col++){
-				mines[row][col]=false;
-				visible[row][col]=false;
-			}
-		}
+		initMaps();
+		
 		
 		int counter2=15;
 		int randomRow,randomCol;
@@ -31,6 +27,14 @@ class MineField{
 			
 			if(trymove(randomRow,randomCol)){
 				counter2--;
+			}
+		}
+	}
+	private void initMaps() {
+	for(int row=0;row<rowMax;row++){
+			for(int col=0;col<colMax;col++){
+				mines[row][col]=false;
+				visible[row][col]=false;
 			}
 		}
 	}	
