@@ -7,6 +7,7 @@ class MineField{
 	private final int rowMax = 5;
 	private final int colMax = 10;
 	
+	//konstruktør som setter opp minefeltet
 	MineField(){
 		
 		mines=new boolean[rowMax][colMax];
@@ -29,6 +30,7 @@ class MineField{
 			}
 		}
 	}	
+	// Metode for å fikse problemer med SourceMonitor
 	private void initMaps() {
 		for(int row=0;row<rowMax;row++){
 			for(int col=0;col<colMax;col++){
@@ -37,6 +39,7 @@ class MineField{
 			}
 		}
 	}
+	//metode for å sjekke at randomgeneratoren ikke legger 2 miner opp på hverandre
 	private boolean trymove(int randomRow, int randomCol) {
 		if(mines[randomRow][randomCol]){
 			return false;
@@ -46,6 +49,7 @@ class MineField{
 			return true;
 		}
 	}
+	//metode som setter alle felt til synlig
 	private void boom() {
 		for(int row=0;row<rowMax;row++){
 			for(int col=0;col<colMax;col++){
@@ -60,7 +64,7 @@ class MineField{
 		
 	}
 
-
+	//metode som skriver riktig tall
 	private char drawChar(int row, int col) {
 		int count=0;
 		if(visible[row][col]){
@@ -103,7 +107,7 @@ class MineField{
 		return boom;
 	}
 
-
+	//metode som sjekker om det du skriver inn er gyldig
 	public boolean legalMoveString(String input) {
 		String[] separated=input.split(" ");
 		int row;
@@ -132,7 +136,7 @@ class MineField{
 		}
 	}
 
-
+	//metode som sjekker om feltet du taster inn allerede er synlig
 	private boolean legalMoveValue(int row, int col) {
 		
 		if(visible[row][col]){
@@ -150,6 +154,7 @@ class MineField{
 		
 		return true;
 	}
+	//metode som segner feltet
 	public void show() {
 		System.out.println("\n    0 1 2 3 4 5 6 7 8 9 ");
 		System.out.println("   ---------------------");
