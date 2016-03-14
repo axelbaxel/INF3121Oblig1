@@ -1,3 +1,10 @@
+/*
+Denne filen er den som inneholder klassen som håndterer kommunikasjon mellom Spiller og programmet
+
+Andre filer som tilhører dette programmet er:
+MineField.java
+Ranking.java
+*/
 import java.util.Scanner;
 
 public class Minesweeper {
@@ -5,11 +12,12 @@ public class Minesweeper {
 	private static MineField field;
 	private static Ranking rank;	
 	public static void main(String[] args) {
-		rank=new Ranking();
+		rank = new Ranking();
 		mainMessage();
-		while(gameCountinue());
+		while (gameCountinue());
 		System.out.println("\nThank you for playing :) Have a nice day!");
 	}	
+	//metode som håndterer brukerinput
 	private static boolean gameCountinue() {
 		field = new MineField();
 		int result = 0;
@@ -67,7 +75,7 @@ public class Minesweeper {
 
 		}
 
-	
+	//metode som skriver oppstartstekst/instruksjoner
 	private static void mainMessage(){
 		System.out.println("Welcome to Minesweeper!");
 		System.out.println("To play just input some coordinates and try not to step ont mine :)");

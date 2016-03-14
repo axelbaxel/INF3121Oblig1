@@ -1,36 +1,43 @@
+/*
+Denne filen er den som inneholder klassen som holder styr med Topplista
+
+Andre filer i programmet er:
+MineField.java
+Minesweeper.java
+*/
 import java.util.Scanner;
 
 public class Ranking{
 
-	private final int MAX_PEOPLE_LIMIT=5;
+	private final int MAX_PEOPLE_LIMIT = 5;
 	private String[] name;
 	private int[] record;
 	private int last;
 	
 	Ranking(){
-		name=new String[MAX_PEOPLE_LIMIT];
-		record=new int[MAX_PEOPLE_LIMIT];
+		name = new String[MAX_PEOPLE_LIMIT];
+		record = new int[MAX_PEOPLE_LIMIT];
 		
-		last=0;
+		last = 0;
 	}
 
-
+	//Metode som registrerer ny toppliste
 	public void recordName(int result) {
 		System.out.print("\n Please enter your name -");
-		Scanner in=new Scanner(System.in);
-		String newName=in.nextLine();
-		if((last==MAX_PEOPLE_LIMIT)&&record[MAX_PEOPLE_LIMIT-1]>result){
-			System.out.println("\nSorry you cannot enter top "+(MAX_PEOPLE_LIMIT)+" players");
+		Scanner in = new Scanner(System.in);
+		String newName = in.nextLine();
+		if((last == MAX_PEOPLE_LIMIT) && record[MAX_PEOPLE_LIMIT - 1] > result){
+			System.out.println("\nSorry you cannot enter top " + (MAX_PEOPLE_LIMIT) + " players");
 			return;
 		}
-		else if(last==MAX_PEOPLE_LIMIT){
-			name[MAX_PEOPLE_LIMIT-1]=newName;
-			record[MAX_PEOPLE_LIMIT-1]=result;
+		else if(last == MAX_PEOPLE_LIMIT){
+			name[MAX_PEOPLE_LIMIT-1] = newName;
+			record[MAX_PEOPLE_LIMIT-1] = result;
 			
 		}
 		else{
-			name[last]=newName;
-			record[last]=result;
+			name[last] = newName;
+			record[last] = result;
 			last++;							
 		}
 		
@@ -38,33 +45,33 @@ public class Ranking{
 		show();
 	}
 
-
+	//metode som skriver ut topplista
 	public void show() {
-		if(last==0){
+		if(last == 0){
 			System.out.println("Still no results");
 			return;
 		}
 		System.out.println("N Name\t\tresult");
-		for(int i=0;i<last;i++){
-			System.out.println((i+1)+" "+name[i]+"\t"+record[i]);
+		for(int i = 0; i < last; i++){
+			System.out.println((i+1) + " " + name[i] + "\t" + record[i]);
 		}
 	}
 	
-	
+	//Metode som sorterer top lista
 	private void sort(){
-		if(last<2) return;
-		boolean unsorted=true;
+		if(last < 2) return;
+		boolean unsorted = true;
 		while(unsorted){
-			unsorted=false;
-			for(int i=0;i<(last-1);i++){
+			unsorted = false;
+			for(int i = 0; i < (last - 1); i++){
 				if(record[i+1]>record[i]){
-					int swapR=record[i];
-					record[i]=record[i+1];
-					record[i+1]=swapR;
-					String swapN=name[i];
-					name[i]=name[i+1];
-					name[i+1]=swapN;
-					unsorted=true;											
+					int swapR = record[i];
+					record[i] = record[i+1];
+					record[i+1] = swapR;
+					String swapN = name[i];
+					name[i] = name[i+1];
+					name[i+1] = swapN;
+					unsorted = true;											
 				}
 			}
 		}
