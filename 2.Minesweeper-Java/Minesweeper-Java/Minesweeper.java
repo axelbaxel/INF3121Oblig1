@@ -6,9 +6,7 @@ public class Minesweeper {
 	private static Ranking rank;	
 	public static void main(String[] args) {
 		rank=new Ranking();
-		mainMessage()
-		
-		;
+		mainMessage();
 		while(gameCountinue());
 		System.out.println("\nThank you for playing :) Have a nice day!");
 	}	
