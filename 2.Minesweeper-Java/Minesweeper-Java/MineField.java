@@ -1,3 +1,11 @@
+/*
+Denne filen er den som inneholder metodene som tegner selve minefeltet
+
+Andre filer som tilhører dette programmet er:
+Minesweeper.java
+Ranking.java
+*/
+
 import java.util.Random;
 
 class MineField{
