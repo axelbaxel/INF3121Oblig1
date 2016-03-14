@@ -77,13 +77,9 @@ class MineField{
 		int count=0;
 		if(visible[row][col]){
 			if(mines[row][col]) return '*';
-			for(int irow=row-1;irow<=row+1;irow++){
-				for(int icol=col-1;icol<=col+1;icol++){
-					if(icol>=0&&icol<colMax&&irow>=0&&irow<rowMax){
-						if(mines[irow][icol]) count++;
-					}
-				}
-			}
+			
+			count = countIter(count);
+			
 		}
 		else{
 			if(boom){
@@ -109,6 +105,17 @@ class MineField{
 		
 		default:return 'X';
 		}
+	}
+	//metode for å redusere complexity
+	private int countIter(int count) {
+		for(int irow=row-1;irow<=row+1;irow++){
+			for(int icol=col-1;icol<=col+1;icol++){
+				if(icol>=0&&icol<colMax&&irow>=0&&irow<rowMax){
+					if(mines[irow][icol]) count++;
+				}
+			}
+		}
+		return count;
 	}
 	public boolean getBoom(){
 		
